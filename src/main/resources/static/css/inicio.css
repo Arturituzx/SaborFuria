@@ -1,0 +1,326 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+ .view {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+    }
+
+body::-webkit-scrollbar{
+	width: 15px;
+}
+body::-webkit-scrollbar-thumb{
+	background: #f8ab3c;
+	border-radius: 8px;
+}
+/******** ESTILOS BANNER  ********/
+
+.banner{ 
+	background: url(../images/bg-1.jpg) no-repeat fixed center center;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  /* background-color: bisque;*/
+}
+.banner .content{
+    max-width: 900px;
+    text-align: center;
+}
+.banner .content h2{
+    font-family: serif;
+    font-size: 3em;
+   color: #fff;
+   font-weight: 300;
+}
+.banner .content p{
+    font-size: 1em;
+    color: #AEB6BF ;
+}
+.btn2{
+    font-size: 1em;
+    color: #fff !important;
+    /*background: #45B39D;*/
+    background: #f8ab3c;
+    display: inline-block;
+    padding: 10px 30px;
+    margin-top: 20px;
+    text-transform: uppercase;
+    text-decoration: none !important;
+    letter-spacing: 2px;
+    transition: 0.5s;
+}
+.btn2:hover{
+    letter-spacing: 6px;
+}
+
+/*****Logo ******/
+.width-logo{
+	width: 120px;
+}
+
+
+
+/******** ESTILOS HEADER ******/
+
+header{
+	background-color: #e2c973;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 0px 100px;
+    z-index: 10000;
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+    transition: 0.3s;
+}
+header.sticky{    
+    padding: 10px 100px;
+    opacity: 0.9;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+}
+header .logo{
+    color: #fff;
+    font-weight: 700;
+    font-size: 2em;
+    text-decoration: none;
+}
+header.sticky .logo{
+    color: #111;
+}
+header .logo span{
+    color: #E53935;
+}
+header .navigation{
+    position: relative;
+    display: flex;
+}
+header .navigation li{
+    list-style: none;
+    margin-left: 30px;
+}
+header .navigation li a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: 300;
+}
+header.sticky .navigation li a {
+    color: #fff;
+}
+
+
+
+section{
+    padding: 100px;
+}
+.txt-center{
+	text-align: center;
+}
+.txt-bg-orange{
+	color: rgba(212, 175, 55);
+}
+.tituloTexto span{
+    color: #45B39D;
+    font-weight: 700;
+    font-size: 1.5em;
+}
+
+/*********PROMOCIONES**********/
+
+
+
+
+/*****TIPS*****/
+
+
+.tips{
+	background: url(../images/ingredientes.jpg) no-repeat fixed center center;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: block;
+    justify-content: center;
+    align-items: center;
+  /* background-color: bisque;*/
+}
+
+.color-w{
+	color: #fff;
+	}
+	
+	
+/************NOSOTROS******/	
+	
+
+
+  .nosotros {
+    background: url("../images/nosotros.png") no-repeat fixed center center;
+    background-size: cover;
+     position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .nosotros h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+
+  .nosotros p {
+    font-size: 18px;
+    margin-bottom: 40px;
+    color: #fff;
+  }
+
+  .nosotros .image-container {
+	  display: flex;
+  }
+
+  .nosotros img {
+    max-width: 200px;
+    border-radius: 5%;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  }
+
+  .nosotros .description {
+    max-width: 650px;
+  }	
+	
+/***********CONTACTANOS*********/
+
+.contacto{
+    background: url("../images/contactanos.jpg") no-repeat fixed center center;
+    background-size: cover;
+     position: relative;
+    width: 100%;
+    height: auto;
+    display: block;
+    justify-content: center;
+    align-items: center;
+
+  }
+
+  .contact-section {
+    text-align: left;
+  }
+
+  .contact-section h2 {
+    font-size: 36px;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+  
+  .contact-section p {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #fff;
+  }
+
+  .contact-form {
+    max-width: 300px;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    font-size: 18px;
+    margin-bottom: 8px;
+   	color: #fff;
+  }
+
+  input, textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+  }
+
+  textarea {
+    resize: vertical;
+    height: 150px;
+  }
+
+  .map-container {
+    width: 100%;
+    height: 400px;
+    margin-top: 40px;
+  }
+
+/*****FOOTER*******/
+footer {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.footer-logo img {
+    width: 100px;
+    height: auto;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ff9900;
+}
+
+.social-icons a {
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+}
+
+.footer-copyright {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+.footer-copyright p{
+	color: #fff;
+}
+
+	
+
+@media only screen and (min-height: 780px) {
+  .banner{ 
+	background: url(../images/fondo-cel.jpg) no-repeat fixed center;
+    background-size: cover;
+	}
+	.content{
+		display: none;
+	}
+}

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8" />
+    <title th:text="${titulo}"></title>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/registrar.css}">
+    <!-- Agrega aquí la referencia a los iconos que desees, por ejemplo Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<style>
+
+/*****FOOTER*******/
+footer {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+}
+
+.footer-logo img {
+    width: 100px;
+    height: auto;
+}
+
+.footer-links a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #ff9900;
+}
+
+.social-icons a {
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    transform: scale(1.2);
+}
+
+.footer-copyright {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 14px;
+}
+.footer-copyright p{
+	color: #fff;
+}
+
+
+</style>
+<body>
+    <header>
+		<!-- <a href="#" class="logo">La Cabaña Marina<span>.</span></a>-->
+		<a class="navbar-brand"  th:href="@{/}"><img class="width-logo" src="/ico/furiablanco.png"></a>
+		<div class="menuAlternar" onclick="alternarMenu();"></div>
+		<ul class="navigation">
+			<li><a th:href="@{/}" onclick="alternarMenu();">Inicio</a></li>
+			<li><a th:href="@{/promociones}" onclick="alternarMenu();">Promociones</a></li>
+			<li><a th:href="@{/menu}" onclick="alternarMenu();">Menu</a></li>
+			<li><a th:href="@{/nosotros}" onclick="alternarMenu();">Nosotros</a></li>
+			<!--<li><a href="#chef" onclick="alternarMenu();">Chef's</a></li>
+			<li><a href="#testimonios" onclick="alternarMenu();">Testimonios</a></li>-->
+			<li><a th:href="@{/Contactanos}" onclick="alternarMenu();">Contactanos</a></li>
+			<li><a th:href="@{/login}" onclick="alternarMenu();">Inicia Sesión</a></li>
+			<li><a th:href="@{/Reserva}" onclick="alternarMenu();">Reserva</a></li>
+		</ul>
+	</header>
+
+    <form th:action="@{/registrarCliente}" th:object="${cliente}" method="post" onsubmit="return validarFormulario();" novalidate>
+		<h1 th:text="${titulo}"></h1>
+		<div style="display: flex; justify-content: space-between;">
+			<div style="flex: 1;">
+				<label><i class="fas fa-user"></i> Nombres:</label>
+				<input type="text" th:field="*{nom}" placeholder="Ingrese sus Nombres" required/>
+				<label><i class="fas fa-map-marker-alt"></i> Distrito:</label>
+				<select th:field="*{dis}" required>
+					<option value="" disabled selected style="color: #333;">Selecciona Distrito</option>
+					<option value="Barranco">BARRANCO</option>
+					<option value="Breña">BREÑA</option>
+					<option value="Jesus Maria">JESUS MARIA</option>
+					<option value="La Molina">LA MOLINA</option>
+					<option value="Lince">LINCE</option>
+					<option value="Magdalena">MAGDALENA DEL MAR</option>
+					<option value="Miraflores">MIRAFLORES</option>
+					<option value="San Isidro">SAN ISIDRO</option>
+					<option value="San Luis">SAN LUIS</option>
+					<option value="San Miguel">SAN MIGUEL</option>
+					<option value="Santa Anita">SANTA ANITA</option>
+					<option value="Santiago de Surco">SANTIAGO DE SURCO</option>
+					<option value="Surquillo">SURQUILLO</option>
+				</select>
+				<label><i class="fas fa-id-card"></i> Documento de Identidad:</label>
+				<input type="text" th:field="*{dni}" placeholder="Ingrese su Documento de Identidad" required
+					pattern="[0-9]{8}" title="Debe contener 8 dígitos"/>
+
+				<label><i class="fas fa-envelope"></i> Correo:</label>
+				<input type="email" th:field="*{correo}" placeholder="Ingrese su correo" required/>
+
+
+				<label><i class="fas fa-lock"></i> Contraseña:</label>
+				<div style="position: relative;">
+					<input type="password" th:name="pass" id="password" placeholder="Ingrese su contraseña"
+						pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?!.*\s).{8,}$" required/>
+
+				</div>
+
+			</div>
+			<div style="flex: 1;">
+				<label><i class="fas fa-user"></i> Apellidos:</label>
+				<input type="text" th:field="*{ape}" placeholder="Ingrese sus Apellidos" required/>
+				<label><i class="fas fa-map-marker-alt"></i> Dirección:</label>
+				<input type="text" th:field="*{dir}" placeholder="Ingrese su Direccion" required/>
+				<label><i class="fas fa-user"></i> Edad:</label>
+				<input type="number" th:field="*{edad}" placeholder="Ingrese su edad"/>
+				<span class="text-danger" th:errors="*{edad}"></span>
+				<label><i class="fas fa-phone"></i> Celular:</label>
+				<input type="text" th:field="*{cel}" placeholder="Ingrese su número de Celular" pattern="[0-9]{9}"
+					title="Debe tener 9 dígitos"/>
+
+
+				<label><i class="fas fa-lock"></i> Confirmar Contraseña: </label>
+				<div style="position: relative;">
+					<input type="password" th:field="*{contra}" id="confirmPassword" placeholder="Confirmar contraseña"/>
+
+				</div>
+			</div>
+		</div>
+
+		<div style="display: flex; justify-content: flex-start; margin-left: 20px;">
+			<input type="checkbox" name="terminos" required>
+			<span>Acepto los términos y condiciones</span>
+		</div>
+
+		<input type="submit" value="Registrar">
+		<input type="hidden" th:field="*{id}" />
+	</form>
+		<footer>
+		<div class="footer-logo">
+			<a href="#banner">
+				<img src="/ico/furiablanco.png" alt="Logo">
+			</a>
+		</div>
+		<div class="footer-links">
+			<a href="#banner">Home</a>
+			<a href="#promociones">Promociones</a>
+			<a href="#tips">Tips</a>
+			<a href="#nosotros">Nosotros</a>
+			<a th:href="@{/contactanos}">Contacto</a>
+		</div>
+		<div class="social-icons">
+            <a href="#"><img src="https://image.flaticon.com/icons/png/512/145/145802.png" alt="Facebook"></a>
+            <a href="#"><img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_twitter_icon_130635.png" alt="Twitter"></a>
+            <a href="#"><img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_instagram_icon_130614.png" alt="Instagram"></a>
+        </div>
+		<div class="footer-copyright">
+			<p>&copy; 2023 Todos los derechos reservados</p>
+		</div>
+	</footer>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.querySelector('form');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault(); // Evita que el formulario se envíe de inmediato
+
+                // Validación de campos (puedes personalizar según tus necesidades)
+                const apellido = document.querySelector('input[name="ape"]').value.trim();
+                const nombre = document.querySelector('input[name="nom"]').value.trim();
+                const pass = document.querySelector('input[name="pass"]').value.trim();
+
+                if (apellido === '' || nombre === '' || pass === '') {
+                    alert('Por favor, complete todos los campos.');
+                } else {
+                    // Si todos los campos están completos, puedes enviar el formulario aquí
+                    form.submit();
+                }
+            });
+
+            // Función para alternar la visibilidad de la contraseña
+            const togglePassword = document.getElementById('togglePassword');
+            const password = document.getElementById('password');
+
+            togglePassword.addEventListener('click', function () {
+                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                password.setAttribute('type', type);
+                togglePassword.classList.toggle('active');
+            });
+
+            // Función para alternar la visibilidad de la confirmación de contraseña
+            const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
+            const confirmPassword = document.getElementById('confirmPassword');
+
+            toggleConfirmPassword.addEventListener('click', function () {
+                const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+                confirmPassword.setAttribute('type', type);
+                toggleConfirmPassword.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+
+</html>

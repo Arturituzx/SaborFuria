@@ -1,0 +1,185 @@
+@charset "UTF-8";
+
+/* Estilos para el contenido */
+.catalogo {
+	display: flex;
+	flex-wrap: wrap;
+	/* Ajusta a una cuadrícula */
+	justify-content: center;
+	/* Centra horizontalmente */
+	align-items: center;
+	/* Centra verticalmente */
+	max-width: 960px;
+	/* Ancho máximo del contenedor (4 hamburguesas por fila) */
+	margin: 20px auto;
+	/* Centra el contenedor en la página */
+}
+
+.columna {
+	flex: 0 0 calc(25% - 20px);
+	/* Divide en 4 columnas con margen entre ellas */
+	box-sizing: border-box;
+	margin: 10px;
+	/* Añade margen entre las columnas */
+}
+
+/* Estilos para el contenedor de la hamburguesa */
+.hamburguesa {
+	background-color: white;
+	/* Fondo blanco */
+	border: 2px solid #f8ab3c;
+	/* Borde inicial naranja */
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	margin: 0;
+	/* Elimino el margen */
+	padding: 10px;
+	/* Añado padding */
+	text-align: center;
+	border-radius: 15px;
+	/* Bordes circulares más notorios */
+	max-width: 300px;
+	/* Limito el ancho máximo */
+	display: inline-block;
+	/* Para que estén en línea */
+	position: relative;
+	/* Permite posicionar elementos hijos de forma relativa */
+	transition: border-color 0.3s;
+	/* Transición suave del color del borde */
+}
+
+.hamburguesa p {
+	font-size: 1rem;
+	color: #333;
+	/* Color del texto del precio */
+	margin: 5px 0;
+	/* Añade espacio entre los párrafos */
+}
+
+.hamburguesa .precio-falso {
+	text-decoration: line-through;
+	/* Tachado del texto */
+	color: red;
+	/* Color rojo */
+	display: inline-block;
+	/* Para que estén en línea */
+}
+
+.hamburguesa .precio-verdadero {
+	color: black;
+	/* Color verde para el precio verdadero */
+	display: inline-block;
+	/* Para que estén en línea */
+	font-weight: bold;
+	/* Texto en negrita para el precio real */
+	margin-left: 10px;
+	/* Añade espacio entre los precios */
+}
+
+.hamburguesa img {
+	width: 100%;
+	height: 200px;
+	object-fit: cover;
+	border-radius: 15px;
+	transition: transform 0.2s;
+}
+
+.hamburguesa img:hover {
+	transform: scale(1.1);
+	border-color: #ff391c;
+	/* Cambia el color del borde al pasar el mouse a naranja más oscuro */
+}
+
+.boton {
+	background-color: #f8ab3c;
+	color: #fff;
+	text-decoration: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	margin: 10px 0;
+	display: inline-block;
+}
+
+.boton-container {
+	text-align: center;
+	margin-top: 5px;
+}
+
+.boton:hover {
+	background-color: #ff391c;
+}
+
+
+
+
+/***CARRITO CSS******/
+
+	#carrito {
+    background-color: #f8ab3c;
+    color: white;
+    padding: 10px;
+    border: 2px solid #f8ab3c;
+    border-radius: 5px;
+    display: none;
+    position: fixed; /* Fija la posición del carrito en la ventana */
+    top: 20px; /* Ajusta la posición superior según tus necesidades */
+    right: 20px; /* Ajusta la posición derecha según tus necesidades */
+    z-index: 1000; /* Controla la superposición del carrito */
+}
+
+#carrito h3 {
+    margin: 0;
+}
+
+#lista-carrito li {
+    list-style: none;
+    margin: 5px 0;
+}
+
+#total-carrito {
+    font-weight: bold;
+}
+
+
+.carrito-pequeno {
+    width: 200px; /* Ajusta el ancho según tus necesidades */
+}
+
+#cerrar-carrito {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    cursor: pointer;
+    background-color: #111;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 14px;
+}
+
+#cerrar-carrito:hover {
+    background-color: #f8ab3c;
+}
+.carrito-item {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .carrito-info {
+        flex: 1;
+        margin: 0 10px;
+    }
+    
+.btn-borrar{width: 20px;
+    height: 20px;
+	border: none;
+	font-size: 10px;
+	background-color: #fff;
+	border-radius: 50%;
+}

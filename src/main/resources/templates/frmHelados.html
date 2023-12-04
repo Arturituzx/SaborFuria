@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Sabor Furia</title>
+	<link rel="stylesheet" th:href="@{/css/inicio.css}">
+	<link rel="stylesheet" th:href="@{/css/estilosProductos.css}">
+	<link rel="shortcut icon" href="/ico/furiablanco.ico" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+   
+</head>
+
+<body>
+
+	<header>
+		<!-- <a href="#" class="logo">La Cabaña Marina<span>.</span></a>-->
+		<a class="navbar-brand"  th:href="@{/}"><img class="width-logo" src="/ico/furiablanco.png"></a>
+		<div class="menuAlternar" onclick="alternarMenu();"></div>
+		<ul class="navigation">
+			<li><a th:href="@{/}" onclick="alternarMenu();">Inicio</a></li>
+			<li><a th:href="@{/promociones}" onclick="alternarMenu();">Promociones</a></li>
+			<li><a th:href="@{/menu}" onclick="alternarMenu();">Menu</a></li>
+			<li><a th:href="@{/nosotros}" onclick="alternarMenu();">Nosotros</a></li>
+			<!--<li><a href="#chef" onclick="alternarMenu();">Chef's</a></li>
+			<li><a href="#testimonios" onclick="alternarMenu();">Testimonios</a></li>-->
+			<li><a th:href="@{/Contactanos}" onclick="alternarMenu();">Contactanos</a></li>
+			<li><a th:href="@{/login}" onclick="alternarMenu();">Inicia Sesión</a></li>
+			<li><a th:href="@{/login}" onclick="alternarMenu();">Reserva</a></li>
+		</ul>
+	</header>
+	
+    <div class="container mt-5">
+        <h1 class="text-center mb-4">Nuestro Menú</h1>
+        <div class="row">
+            <!-- Itera sobre la lista de productos y muestra los datos -->
+            <div th:each="producto : ${helados}" class="catalogo">
+                <div class="hamburguesa">
+                    <img th:src="'/importar/' + ${producto.imagen}" class="card-img-top" alt="Imagen del producto">
+                    <div class="card-body">
+                        <h2 class="card-title" th:text="${producto.nomMen}"></h2>
+                        <p th:text="${'S/' + producto.pre}"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <div class="footer-logo">
+			<a href="#banner">
+            <img src="/ico/furiablanco.png" alt="Logo">
+            </a>
+        </div>
+        <div class="footer-links">
+            <a href="#banner" >Home</a>
+            <a href="#promociones">Promociones</a>
+            <a href="#tips">Tips</a>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#">Contacto</a>
+        </div>
+        <!--<div class="social-icons">
+            <a href="#"><img src="https://image.flaticon.com/icons/png/512/145/145802.png" alt="Facebook"></a>
+            <a href="#"><img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_twitter_icon_130635.png" alt="Twitter"></a>
+            <a href="#"><img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_instagram_icon_130614.png" alt="Instagram"></a>
+        </div>-->
+        <div class="footer-copyright">
+            <p>&copy; 2023 Todos los derechos reservados</p>
+        </div>
+	</footer>
+    <!-- Agrega enlaces a los archivos JavaScript de Bootstrap y jQuery si los necesitas -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

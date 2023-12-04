@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Registrar Factura</title>
+<meta charset="UTF-8" />
+	<title th:text="${titulo}"></title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+
+		<div class="card bg-light">
+			<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<form th:action="@{/registrarProducto}" th:object="${producto}" method="post" enctype="multipart/form-data">
+
+
+					<div class="form-group row">
+						<input type="hidden" th:field="*{id}">
+						<label class="col-md-2" for="tipMe">Tipo de Menu </label>
+						<select th:field="*{tipMe}" class="form-control form-control-sm col-md-6"
+							id="nombreProducto" placeholder="Seleccione">
+							<option value="Hamburguesas">Hamburguesas</option>
+							<option value="Helados">Helados</option>
+							<option value="Bebidas">Bebidas</option>
+							<option value="Complementos">Complementos</option>
+							<option value="Promociones">Promociones</option>
+						</select>
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2" for="nomMen">Nombre del menu: </label>
+						<input type="text" th:field="*{nomMen}" class="form-control form-control-sm col-md-6"
+							 placeholder="Nombre del menu">
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2" for="precio">Precio </label>
+						<input type="text" th:field="*{pre}" class="form-control form-control-sm col-md-6"
+							id="descripcion" placeholder="Ingrese el precio del producto">
+
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2" for="imagen">Imagen: </label>
+						<input type="file" name="file" id="imagen" class="form-control form-control-sm col-md-6"
+							placeholder="Imagen" required>
+						<span class="text-danger" id="error_imagen"></span>
+					</div>
+
+					<div class="card-footer bg-dark">
+						<input type="submit" class="btn btn-primary btn-sm" value="Registrar Producto">
+					</div>
+					<input type="hidden" th:field="*{id}"/>
+				</form>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

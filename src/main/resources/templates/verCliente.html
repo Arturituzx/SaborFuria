@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+	<style>
+
+.card-header{
+    background-color: #125CA5;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 1.5rem;
+}
+
+.card-body{
+    padding: 2rem;
+}
+.card-body h4{
+    
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+.card{
+    background-color: rgba(86, 73, 73, 0.176);
+    border-radius: 0;
+    border: none;
+}
+.list-group{
+    border-radius: 0;
+}
+.list-group-item{
+    background-color: #ffffff;
+    margin-bottom: 0.5rem;
+    border: none;
+    color: #2a2d30;
+    font-weight: bold;
+    text-transform: capitalize;
+}
+
+thead{
+    background-color: #C3E6CB;
+}
+tbody{
+    background-color: #fff;
+}
+	
+	</style>
+<body>
+	
+	<h1 class="card-header" th:text="${titulo}"></h1>
+	
+	<div class="container py-4">
+		<div class="card bg-light">
+			
+			<div class="card-body">
+			
+				<h4 class="card-tittle">
+					<a th:href="@{'/registrarFacturas/' + ${cliente.id}}"
+						th:text="'Crear Factura'"></a>
+				</h4>
+				
+				<ul class="list-group">
+					<li class="list-group-item" th:text="${cliente.nom}"></li>
+					<li class="list-group-item" th:text="${cliente.ape}"></li>
+					<li class="list-group-item" th:text="${cliente.dis}"></li>
+					<li class="list-group-item" th:text="${cliente.dir}"></li>
+					<li class="list-group-item" th:text="${cliente.dni}"></li>
+					<li class="list-group-item" th:text="${cliente.correo}"></li>
+				</ul>
+				
+				<table class="table table-bordered table-spriped my-4">
+					<thead class="thead-inverse">
+						<tr>
+							<th>Folio</th>
+							<th>Fecha de emision</th>
+							<th>Descripción</th>
+							<th>Observacion</th>
+							<th>RUC</th>
+							<th>Razon Social</th>
+							<th>Total</th>
+						</tr>
+					</thead>
+					
+					<div th:if="${#lists.isEmpty(cliente.facturas)}" 
+						 class="alert alert-info my-4" th:text="'No hay facturas asignadas para el cliente '
+						 										+ ${cliente.nom} + ' ' + ${cliente.ape}">
+					</div>
+					
+					
+					
+					<tbody>
+						<tr th:each="factura: ${cliente.facturas}">
+							<td th:text="${factura.idFac}"></td>
+							<td th:text="${factura.fecEm}"></td>
+							<td th:text="${factura.descripcion}"></td>
+							<td th:text="${factura.observacion}"></td>
+							<td th:text="${factura.ruc}"></td>
+							<td th:text="${factura.razSoc}"></td>
+							<td th:text="${factura.total}"></td>
+						</tr>
+					</tbody>
+				
+				</table>
+			
+	
+			</div>
+		</div>
+	</div>
+	
+	<footer></footer>
+</body>
+</html>

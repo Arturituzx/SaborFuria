@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Sabor Furia</title>
+	<link rel="stylesheet" th:href="@{/css/inicio.css}">
+	<link rel="shortcut icon" href="/ico/furiablanco.ico" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- Enlace al archivo CSS de Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<!--<script>
+        window.onload = function() {
+            alert("Bienvenido a SaborEuforia");
+        };	-->
+	</script>
+</head>
+
+<body>
+	<header>
+		<!-- <a href="#" class="logo">La Cabaña Marina<span>.</span></a>-->
+		<a class="navbar-brand"  th:href="@{/}"><img class="width-logo" src="/ico/furiablanco.png"></a>
+		<div class="menuAlternar" onclick="alternarMenu();"></div>
+		<ul class="navigation">
+			<li><a th:href="@{/}" onclick="alternarMenu();">Inicio</a></li>
+			<li><a th:href="@{/promociones}" onclick="alternarMenu();">Promociones</a></li>
+			<li><a th:href="@{/menu}" onclick="alternarMenu();">Menu</a></li>
+			<li><a th:href="@{/nosotros}" onclick="alternarMenu();">Nosotros</a></li>
+			<!--<li><a href="#chef" onclick="alternarMenu();">Chef's</a></li>
+			<li><a href="#testimonios" onclick="alternarMenu();">Testimonios</a></li>-->
+			<li><a th:href="@{/Contactanos}" onclick="alternarMenu();">Contactanos</a></li>
+			<li><a th:href="@{/login}" onclick="alternarMenu();">Inicia Sesión</a></li>
+			<li><a th:href="@{/Reserva}" onclick="alternarMenu();">Reserva</a></li>
+		</ul>
+	</header>
+	
+	<section class="contacto" id="contacto">
+		 <div class="head-div contact-section">
+    <h2>Contáctanos</h2>
+    <div class="contact-form">
+      <form th:action="@{/Contactanos}" th:object="${contactanos}" method="post">
+        <div class="form-group">
+          <label for="name">Nombre:</label>
+          <input th:field="*{nombre}" placeholder="Nombres" type="text" id="name" name="name" required>
+        </div>
+        <div class="form-group">
+          <label for="email">Correo:</label>
+          <input th:field="*{correo}" placeholder="Email" type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+          <label for="message">Mensaje:</label>
+          <textarea  th:field="*{mensaje} "placeholder="Mensaje" id="message" name="message" required></textarea>
+        </div>
+        <input type="submit" value="Enviar">
+        <input type="hidden" th:field="*{id}"/>
+      </form>
+    </div>
+    <div class="map-container">
+      <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.5808905762638!2d-76.94424012504707!3d-12.072331488166473!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c7112063f383%3A0x62f9e66ce7494a9!2sFIA%20-%20DATA!5e0!3m2!1sen!2spe!4v1692871538847!5m2!1sen!2spe" loading="lazy" referrerpolicy="no-referrer-when-downgrade"
+        width="100%" height="100%" frameborder="0" style="border:0" allowfullscreen></iframe>
+    </div>
+  </div>
+	</section>
+	
+	
+	
+    <footer>
+        <div class="footer-logo">
+			<a href="#banner">
+            <img src="/ico/furiablanco.png" alt="Logo">
+            </a>
+        </div>
+        <div class="footer-links">
+			<a th:href="@{/}" onclick="alternarMenu();">Home</a>
+			<a th:href="@{/promociones}" onclick="alternarMenu();">Promociones</a>
+			<a th:href="@{/tips}" onclick="alternarMenu();">Tips</a>
+			<a th:href="@{/nosotros}" onclick="alternarMenu();">Nosotros</a>
+			<a th:href="@{/Contactanos}" onclick="alternarMenu();">Contacto</a>
+		</div>
+        <!--<div class="social-icons">
+            <a href="#"><img src="https://image.flaticon.com/icons/png/512/145/145802.png" alt="Facebook"></a>
+            <a href="#"><img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_twitter_icon_130635.png" alt="Twitter"></a>
+            <a href="#"><img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_instagram_icon_130614.png" alt="Instagram"></a>
+        </div>-->
+        <div class="footer-copyright">
+            <p>&copy; 2023 Todos los derechos reservados</p>
+        </div>
+	</footer>
+
+
+
+	<script type="text/javascript">
+		window.addEventListener('scroll', function () {
+			const header = document.querySelector('header');
+			header.classList.toggle("sticky", window.scrollY > 0);
+		});
+
+		function alternarMenu() {
+			const menuAlternar = document.querySelector('.menuAlternar');
+			const navigation = document.querySelector('.navigation');
+			menuAlternar.classList.toggle('activo');
+			navigation.classList.toggle('activo');
+		}
+
+	</script>
+</body>
+
+</html>

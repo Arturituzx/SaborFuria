@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8" />
+	<title th:text="${titulo}"></title>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+	<div class="container">
+
+		<div class="card bg-light">
+			<div class="card-header bg-dark text-white" th:text="${titulo}"></div>
+			<div class="card-body">
+
+				<form th:action="@{/views/productos/save}" th:object="${producto}" method="post" enctype="multipart/form-data">
+
+
+					<div class="form-group row">
+						<input type="hidden" th:field="*{id}">
+						<label class="col-md-2" for="nombreProducto">Producto </label>
+						<input type="text" th:field="*{nombreProducto}" class="form-control form-control-sm col-md-6"
+							id="nombreProducto" placeholder="Nombre del Producto">
+
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2" for="precio">Precio compra: </label>
+						<input type="text" th:field="*{precioCompra}" class="form-control form-control-sm col-md-6"
+							id="precio" placeholder="Precio de compra del producto">
+
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2" for="descripcion">Descripcion: </label>
+						<input type="text" th:field="*{descripcion}" class="form-control form-control-sm col-md-6"
+							id="descripcion" placeholder="Descripcion del producto">
+
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2" for="stock">Stock: </label>
+						<input type="text" th:field="*{stock}" class="form-control form-control-sm col-md-6" id="stock"
+							placeholder="Stock del producto">
+
+					</div>
+					<div class="form-group row">
+						<label class="col-md-2" for="imagen">Imagen: </label>
+						<input type="file" name="file" id="imagen" class="form-control form-control-sm col-md-6"
+							placeholder="Imagen" required>
+						<span class="text-danger" id="error_imagen"></span>
+					</div>
+
+					<div class="card-footer bg-dark">
+						<input type="submit" class="btn btn-primary btn-sm" value="Guardar">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script>
+		$(document).ready(function () {
+			$("#imagen").on("change", function () {
+				if ($("#imagen").val() == "") {
+					$("#error_imagen").html("Debes seleccionar una imagen.");
+				} else {
+					$("#error_imagen").html("");
+				}
+			});
+		});
+
+		$(document).ready(function () {
+			$("#frmCrear").submit(function () {
+				if ($("#imagen").val() == "") {
+					alert("Debes seleccionar una imagen.");
+					return false;
+				}
+			});
+		});
+	</script>
+</body>
+
+</html>

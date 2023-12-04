@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Formulario Empleados</title>
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<!-- Font-->
+	<link rel="stylesheet" th:href="@{/css/nunito-font.css}">
+	<!-- Main Style Css -->
+	<link rel="stylesheet" th:href="@{/css/style.css}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.18.0/font/bootstrap-icons.css" rel="stylesheet">
+
+</head>
+
+<body style="background-color: white;">
+	<form style=background-color:azure; th:action="@{/registrarEmpleado}" th:object="${empleado}" method="post"
+		novalidate>
+		<h1 th:text="${titulo}"></h1>
+		<div style="display: flex; justify-content: space-between;">
+			<div class="sec1">
+				<label><i class="fas fa-user"></i> Nombres:</label>
+				<input type="text" th:field="*{nombre}" placeholder="Ingrese sus Nombres" required />
+
+				<label><i class="fas fa-user"></i> Apellido:</label>
+				<input type="text" th:field="*{apellido}" placeholder="Ingrese sus Apellidos" required />
+
+				<label><i class="fas fa-phone"></i> Celular:</label>
+				<input type="text" th:field="*{numTele}" placeholder="Ingrese su número de Celular" pattern="[0-9]{9}"
+					title="Debe tener 9 dígitos" />
+
+			</div>
+			<div class="sec1">
+				<label><i class="fas fa-user"></i> Genero:</label>
+				<input type="text" th:field="*{genero}" placeholder="Ingrese su Genero" required />
+
+				<label><i class="fas fa-map-marker-alt"></i> Direccion:</label>
+				<input type="text" th:field="*{direccion}" placeholder="Ingrese su Direccion" required />
+
+				<label><i class="bi bi-currency-dollar"></i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-currency-dollar" viewBox="0 0 16 16">
+  <path d="M4 10.781c.148 1.667 1.513 2.85 3.591 3.003V15h1.043v-1.216c2.27-.179 3.678-1.438 3.678-3.3 0-1.59-.947-2.51-2.956-3.028l-.722-.187V3.467c1.122.11 1.879.714 2.07 1.616h1.47c-.166-1.6-1.54-2.748-3.54-2.875V1H7.591v1.233c-1.939.23-3.27 1.472-3.27 3.156 0 1.454.966 2.483 2.661 2.917l.61.162v4.031c-1.149-.17-1.94-.8-2.131-1.718H4zm3.391-3.836c-1.043-.263-1.6-.825-1.6-1.616 0-.944.704-1.641 1.8-1.828v3.495l-.2-.05zm1.591 1.872c1.287.323 1.852.859 1.852 1.769 0 1.097-.826 1.828-2.2 1.939V8.73l.348.086z"/>
+</svg>Salario:</label>
+				<input type="text" th:field="*{salario}" placeholder="Ingrese su Salario" required />
+
+			</div>
+		</div>
+		<input type="submit" value="Registrar">
+		<input type="hidden" th:field="*{idEm}" />
+	</form>
+
+</body>
+
+</html>

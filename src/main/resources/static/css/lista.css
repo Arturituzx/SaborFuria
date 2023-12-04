@@ -1,0 +1,19 @@
+@charset "ISO-8859-1";
+
+body {
+	background-image: url("/image/fondoregistrar.jpg");
+	background-size: cover;
+}
+
+td {
+	background-color: #fff;
+
+}
+
+table {
+	background-color: aquamarine;
+	border-collapse: collapse;
+	width: 100%;
+	max-width: 1600px;
+	margin: 0 auto;
+}

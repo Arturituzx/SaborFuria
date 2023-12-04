@@ -1,0 +1,105 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+body {
+	background-color: #ccc;
+}
+.catalogo {
+	margin-top: 50px;
+	display: flex;
+	flex-wrap: wrap;
+	/* Ajusta a una cuadrícula */
+	justify-content: center;
+	/* Centra horizontalmente */
+	align-items: center;
+	/* Centra verticalmente */
+	max-width: 640px;
+	/* Ancho máximo del contenedor */
+	margin: 130px auto;
+	/* Centra el contenedor en la página */
+}
+
+.columna {
+	flex: 0 0 calc(50% - 20px);
+	/* Divide en 2 columnas con margen entre ellas */
+	box-sizing: border-box;
+	margin: 10px;
+	/* Añado margen entre las columnas */
+}
+
+.hamburguesa {
+	background-color: white;
+	/* Fondo blanco */
+	border: 1px solid #ccc;
+	box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+	margin: 0;
+	/* Elimino el margen */
+	padding: 10px;
+	/* Añado padding */
+	text-align: center;
+	border-radius: 10px;
+	/* Bordes circulares */
+	max-width: 300px;
+	/* Limito el ancho máximo */
+	display: inline-block;
+	/* Para que estén en línea */
+	position: relative;
+	/* Permite posicionar elementos hijos de forma relativa */
+}
+
+.hamburguesa h2 {
+	font-size: 1.5rem;
+	margin: 10px 0;
+	color: #fff;
+	/* Color del texto interior (blanco) */
+	-webkit-text-stroke: 1px #f8ab3c;
+	/* Borde exterior rojo */
+	position: absolute;
+	top: 10px;
+	left: 10px;
+	z-index: 1;
+}
+
+
+.hamburguesa img {
+	width: 100%;
+	height: 300px;
+	/* Establezco un tamaño fijo para las imágenes */
+	object-fit: cover;
+	/* Ajusta la imagen para cubrir el tamaño del contenedor */
+	transition: transform 0.2s;
+	/* Transición suave de 0.2 segundos */
+}
+
+.hamburguesa img:hover {
+	transform: scale(1.1);
+	/* Escala la imagen al 120% del tamaño original */
+}
+
+/* Estilo para los botones */
+.boton {
+	background-color: #f8ab3c;
+	color: #fff;
+	text-decoration: none;
+	padding: 10px 20px;
+	border-radius: 5px;
+	margin: 10px 0;
+	/* Reduzco el margen superior e inferior */
+	display: inline-block;
+    transition: 0.5s;
+}
+
+/* Estilo para el contenedor de botones */
+.boton-container {
+	text-align: center;
+	margin-top: 5px;
+	/* Añade espacio superior para separar el botón de la hamburguesa */
+}
+
+.boton:hover {
+	background-color: #f8ab3c;
+	text-decoration: none;
+	color: white;
+	/* Cambia el color al pasar el puntero */
+	letter-spacing: 2px;
+}
+

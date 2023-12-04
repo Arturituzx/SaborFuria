@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+	crossorigin="anonymous">
+</head>
+<style>
+	.card-header{
+    background-color: #125CA5;
+    color: #fff;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 1.5rem;
+}
+
+.card-body{
+    padding: 2rem;
+}
+.card-body h4{
+    
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-bottom: 1.5rem;
+}
+.card{
+    background-color: rgba(86, 73, 73, 0.176);
+    border-radius: 0;
+    border: none;
+}
+</style>
+<body>
+	<h1 class="card-header" th:text="${titulo}"></h1>
+	<div class="container py-4">
+		<div class="card bg-light">
+
+			<h4 class="card-tittle"></h4>
+
+			<form th:accion="@{/registrarFacturas}" th:object="${factura}"
+				method="post">
+				
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label" th:text="'Cliente'"></label>
+						<div class="col-sm-6">
+							<input th:value="${factura.cliente.nom} + ' ' + ${factura.cliente.ape}" disabled='disabled'/>
+						</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label" th:text="'Descripcion'"></label>
+					<div class="col-sm-6">
+						<input type="text" th:field="*{descripcion}" class="form-control" />
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label" th:text="'Observación'"></label>
+					<div class="col-sm-6">
+						<textarea th:field="*{observacion}" class="form-control"></textarea>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label" th:text="'Observación'"></label>
+					<div class="col-sm-6">
+						<textarea th:field="*{observacion}" class="form-control"></textarea>
+					</div>
+				</div>
+				
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label" th:text="'Fecha de Emision'"></label>
+					<div class="col-sm-6">
+						<input  type="date" th:field="*{fecEm}" class="form-control"></input>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label" th:text="'RUC'"></label>
+					<div class="col-sm-6">
+						<input  type="text" th:field="*{ruc}" class="form-control"></input>
+					</div>
+				</div>
+				<div class="form-group row">
+					<label class="col-sm-2 col-form-label" th:text="'Razon Social'"></label>
+					<div class="col-sm-6">
+						<input  type="text" th:field="*{razSoc}" class="form-control"></input>
+					</div>
+				</div>
+
+				<div class="form-group row">
+					<div class="col-sm-6">
+						<input type="submit" th:value="${titulo}"
+							class="btn btn-secondary" />
+					</div>
+				</div>
+			</form>
+
+		</div>
+	</div>
+
+	<footer></footer>
+</body>
+</html>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Login Form</title>
+	<link rel="shortcut icon" href="/ico/furiablanco.ico" />
+	<link rel="stylesheet" th:href="@{/css/inicio.css}">
+	<link rel="stylesheet" th:href="@{/css/loginstyle.css}">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="https://www.markuptag.com/bootstrap/5/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- Enlace al archivo CSS de Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+
+<body style="background-color:cornsilk;">
+	<header>
+		<!-- <a href="#" class="logo">La Cabaña Marina<span>.</span></a>-->
+		<a class="navbar-brand" href="#"><img class="width-logo" src="/ico/furiablanco.png"></a>
+		<div class="menuAlternar" onclick="alternarMenu();"></div>
+		<ul class="navigation">
+			<li><a th:href="@{/}" onclick="alternarMenu();">Inicio</a></li>
+			<li><a th:href="@{/promociones}" onclick="alternarMenu();">Promociones</a></li>
+			<li><a th:href="@{/tips}" onclick="alternarMenu();">Tips</a></li>
+			<li><a th:href="@{/nosotros}" onclick="alternarMenu();">Nosotros</a></li>
+			<!--<li><a href="#chef" onclick="alternarMenu();">Chef's</a></li>
+			<li><a href="#testimonios" onclick="alternarMenu();">Testimonios</a></li>-->
+			<li><a th:href="@{/Contactanos}" onclick="alternarMenu();">Contactanos</a></li>
+			<li><a th:href="@{/login}" onclick="alternarMenu();">Inicia Sesión</a></li>
+			<li><a th:href="@{/Reserva}" onclick="alternarMenu();">Reserva</a></li>
+		</ul>
+	</header>
+	<div class="login-page bg-h6">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-10 offset-lg-1">
+					<div class="bg-crema shadow rounded">
+						<div class="row">
+							<div class="col-md-7 pe-0">
+								<div class="form-left h-100 py-5 px-5">
+					<h3 class="mb-3">Iniciar Sesion</h3>
+									<form th:action="@{/login}" method="post" class="row g-4">
+										<div class="col-12">
+											<label style="color: black;">Correo<span class="text-danger">*</span></label>
+											<div class="input-group">
+												<div class="input-group-text"><i class="bi bi-person-fill"></i>
+												</div>
+												<input type="text" class="form-control" th:name="correo"
+													placeholder="Ingresar Correo">
+											</div>
+										</div>
+
+										<div class="col-12">
+											<label style="color: black;">Contraseña<span class="text-danger">*</span></label>
+											<div class="input-group">
+												<div class="input-group-text"><i class="bi bi-lock-fill"></i></div>
+												<input type="password" class="form-control" th:name="contra"
+													placeholder="Ingresar contraseña">
+											</div>
+										</div>
+										<div id="error-message" class="alert alert-danger" style="display: none;">
+											Usuario o contraseña incorrectos.
+										</div>
+
+										<div class="col-sm-6">
+											<a th:href="@{/registrarCliente}" class=" a-none">No tienes
+												cuenta? Registrate aqui</a>
+										</div>
+
+										<div class="col-12">
+											<button type="submit" class="btn px-4 mt-4">Iniciar
+												Sesion</button>
+										</div>
+									</form>
+								</div>
+							</div>
+							<div class="col-md-5 ps-0 d-none d-md-block">
+								<div class="form-right h-100 text-white text-center pt-5 bg-logo">
+									<img src="/ico/furiablanco.png" style="max-width: 100%; max-height: 100%;" />
+								</div>
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer>
+		<div class="footer-logo">
+			<a href="#banner">
+				<img src="/ico/furiablanco.png" alt="Logo">
+			</a>
+		</div>
+		<div class="footer-links">
+			<a th:href="@{/}" onclick="alternarMenu();">Home</a>
+			<a th:href="@{/promociones}" onclick="alternarMenu();">Promociones</a>
+			<a th:href="@{/tips}" onclick="alternarMenu();">Tips</a>
+			<a th:href="@{/nosotros}" onclick="alternarMenu();">Nosotros</a>
+			<a th:href="@{/Contactanos}" onclick="alternarMenu();">Contacto</a>
+		</div>
+		<!--<div class="social-icons">
+            <a href="#"><img src="https://image.flaticon.com/icons/png/512/145/145802.png" alt="Facebook"></a>
+            <a href="#"><img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_twitter_icon_130635.png" alt="Twitter"></a>
+            <a href="#"><img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_instagram_icon_130614.png" alt="Instagram"></a>
+        </div>-->
+		<div class="footer-copyright">
+			<p>&copy; 2023 Todos los derechos reservados</p>
+		</div>
+	</footer>
+	<script>
+		const errorParam = new URLSearchParams(window.location.search).get("error");
+		const errorMessage = document.getElementById("error-message");
+
+		if (errorParam === "true") {
+			errorMessage.style.display = "block";
+		}
+	</script>
+
+	<script src="https://www.markuptag.com/bootstrap/5/js/bootstrap.bundle.min.js"></script>
+</body>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Fury Food</title>
+	<link rel="stylesheet" th:href="@{/css/menu.css}">
+	<link rel="stylesheet" th:href="@{/css/inicio.css}">
+	<link rel="shortcut icon" href="/ico/furiablanco.ico" />
+	
+	<style>
+		header .navigation li a:hover{
+    color: #111;
+}
+
+	</style>
+</head>
+<body>
+	<header>
+		<!-- <a href="#" class="logo">La Cabaña Marina<span>.</span></a>-->
+		<a class="navbar-brand" href="#"><img class="width-logo" src="/ico/fury-logo.png"></a>
+		<div class="menuAlternar" onclick="alternarMenu();"></div>
+		<ul class="navigation">
+			<li><a th:href="@{/}" onclick="alternarMenu();">Home</a></li>
+			<li><a th:href="@{/}" onclick="alternarMenu();">Promociones</a></li>
+			<li><a th:href="@{/}" onclick="alternarMenu();">Tips</a></li>
+			<li><a th:href="@{/}"  onclick="alternarMenu();">Nosotros</a></li>
+			<!--<li><a href="#chef" onclick="alternarMenu();">Chef's</a></li>
+			<li><a href="#testimonios" onclick="alternarMenu();">Testimonios</a></li>-->
+			<li><a th:href="@{/}" onclick="alternarMenu();">Contactos</a></li>
+			<li><a th:href="@{/login}" onclick="alternarMenu();">Inicia Sesión</a></li>
+			<li><a th:href="@{/login}" onclick="alternarMenu();">Reserva</a></li>
+		</ul>
+	</header>
+	<section class="menu">
+		<div class="item">
+			<img src="/images/ha2.jpg" alt="Hamburguesa Clásica">
+			<h2>Hamburguesa Clásica</h2>
+			<p>Carne de res, queso cheddar, tomate, pan ,salsa especial.</p>
+			<span class="price">S/11.99</span>
+		</div>
+
+		<div class="item">
+			<img src="/images/ha9.jpg" alt="Hamburguesa BBQ">
+			<h2>Hamburguesa BBQ</h2>
+			<p>Carne de res, pollo, lechuga, tomate, cebolla morada, queso cheddar, pan,pepinillo y salsa barbacoa.</p>
+			<span class="price">S/15.99</span>
+		</div>
+
+		<div class="item">
+			<img src="/images/ha4.jpg" alt="Hamburguesa Ultra">
+			<h2>Hamburguesa Ultra - 2x1</h2>
+			<p>Carne de res, lechuga, tomate, cebolla, queso suizo, pepinillo, pan, salsa especial.</p>
+			<span class="price">S/16.99</span>
+		</div>
+
+		<div class="item">
+			<img src="/images/ha7.jpg" alt="Hamburguesa Mega Papa">
+			<h2>Hamburguesa Mega Papa</h2>
+			<p>Carne de res doble, lechuga doble, tomate, cebolla morada, queso cheddar, pan, salsa especial y 2 porciones de papas medianas.</p>
+			<span class="price">S/24.99</span>
+		</div>
+
+		<div class="item">
+			<img src="/images/ha5.jpg" alt="Hamburguesa Ultra Picante">
+			<h2>Hamburguesa Ultra Picante</h2>
+			<p>Carne de res doble, lechuga, tomate, cebolla caramelo, pepinillo, queso cheddar, pan, salsa picante.</p>
+			<span class="price">S/16.99</span>
+		</div>
+
+		<div class="item">
+			<img src="/images/ha6.jpg" alt="Trio Burguer">
+			<h2>Trio Burguer</h2>
+			<p>Carne de res grande, lechuga, tomate, cebolla, queso cheddar, salsa especial y pepinillo.</p>
+			<span class="price">S/29.99</span>
+		</div>
+		<!-- Helados -->
+		<div class="item">
+			<img src="/images/he1.jpg" alt="Helado Clasicos">
+			<h2>Helado Clasicos</h2>
+			<p>Sabor a vainilla y chocolate.</p>
+			<span class="price">S/2.99</span>
+		</div>
+
+		<div class="item">
+			<img src="/images/he2.jpg" alt="Helado Mixto">
+			<h2>Helado Mixto 2x1</h2>
+			<p>Sabor a lucuma, cafe, fresa con vainilla y fresa con chocolate.</p>
+			<span class="price"><del>S/8.99</del></span> &nbsp; <span class="price"> S/.5.00</span>
+		</div>
+
+		<div class="item">
+			<img src="/images/he3.jpg" alt="Helado de Fresa">
+			<h2>Helado de Fresa</h2>
+			<p>Sabor a fresa</p>
+			<span class="price">S/3.99</span>
+		</div>
+		<!-- Alitas, papas y nuguest -->
+		<div class="item">
+			<img src="/images/alitas1.jpg" alt="Alitas con papas">
+			<h2>Alitas con papas</h2>
+			<p>Alitas con papas.</p>
+			<span class="price">S/18.99</span>
+		</div>
+
+		<div class="item">
+			<img src="/images/alitas2.jpg" alt="Alitas Clasicas">
+			<h2>Alitas Clasicas</h2>
+			<p>Alitas clasicas con salsas.</p>
+			<span class="price">S/15.99</span>
+		</div>
+
+		<div class="item">
+			<img src="/images/alipicante.jpg" alt="Nuggets">
+			<h2>Nuggets</h2>
+			<p>Nuggets con sabor de casa.</p>
+			<span class="price">S/16.99</span>
+		</div>
+	</section>
+
+	<script type="text/javascript">
+		window.addEventListener('scroll', function () {
+			const header = document.querySelector('header');
+			header.classList.toggle("sticky", window.scrollY > 0);
+		});
+
+		function alternarMenu() {
+			const menuAlternar = document.querySelector('.menuAlternar');
+			const navigation = document.querySelector('.navigation');
+			menuAlternar.classList.toggle('activo');
+			navigation.classList.toggle('activo');
+		}
+
+	</script>
+</body>
+
+
+</html>

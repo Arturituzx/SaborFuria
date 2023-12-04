@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<meta charset="UTF-8">
+	<title>Registrar reservaciones</title>
+	<link rel="stylesheet" th:href="@{/css/inicio.css}">
+	<link rel="shortcut icon" href="/ico/furiablanco.ico" />
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+		integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- Enlace al archivo CSS de Bootstrap -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<!--<script>
+        window.onload = function() {
+            alert("Bienvenido a SaborEuforia");
+        };	-->
+	</script>
+</head>
+
+<body>
+	<header>
+		<!-- <a href="#" class="logo">La Cabaña Marina<span>.</span></a>-->
+		<a class="navbar-brand" th:href="@{/}"><img class="width-logo" src="/ico/furiablanco.png"></a>
+		<div class="menuAlternar" onclick="alternarMenu();"></div>
+		<ul class="navigation">
+			<li><a th:href="@{/}" onclick="alternarMenu();">Inicio</a></li>
+			<li><a th:href="@{/promociones}" onclick="alternarMenu();">Promociones</a></li>
+			<li><a th:href="@{/menu}" onclick="alternarMenu();">Menu</a></li>
+			<li><a th:href="@{/nosotros}" onclick="alternarMenu();">Nosotros</a></li>
+			<!--<li><a href="#chef" onclick="alternarMenu();">Chef's</a></li>
+			<li><a href="#testimonios" onclick="alternarMenu();">Testimonios</a></li>-->
+			<li><a th:href="@{/Contactanos}" onclick="alternarMenu();">Contactanos</a></li>
+			<li><a th:href="@{/login}" onclick="alternarMenu();">Inicia Sesión</a></li>
+			<li><a th:href="@{/Reserva}" onclick="alternarMenu();">Reserva</a></li>
+		</ul>
+	</header>
+	<section class="contacto" id="contacto">
+		<div class="head-div contact-section">
+			<h2>Reservaciones</h2>
+			<div class="contact-form">
+				<form th:action="@{/Reserva}" th:object="${reserva}" method="post">
+					<div class="form-group">
+						<label for="numMe">Numero de Mesa:</label>
+						<input th:field="*{numMe}" placeholder="Ingrese el numero de mesa (1-20)" type="text" id="name"
+							name="name" required>
+					</div>
+					<div class="form-group">
+						<label for="numPer">Numero de Personas:</label>
+						<input th:field="*{numPer}" placeholder="Ingrese el numero de personas" type="number" id="email"
+							name="email" required>
+					</div>
+					<div class="form-group">
+						<label for="fecRes">Fecha de Reservacion:</label>
+						<input th:field="*{fecRes}" type="date" placeholder="Ingrese fecha a reservar" id="message"
+							name="message" required></input>
+					</div>
+					<div class="form-group">
+						<label for="horRes">Hora de Reservacion:</label>
+						<input th:field="*{horRes}" type="time" placeholder="Ingrese hora de reservacion" id="message"
+							name="message" required></input>
+					</div>
+					<input type="submit" value="Enviar Reservacion">
+					<input type="hidden" th:field="*{idRes}" />
+				</form>
+			</div>
+	</section>
+
+	<footer>
+		<div class="footer-logo">
+			<a href="#banner">
+				<img src="/ico/furiablanco.png" alt="Logo">
+			</a>
+		</div>
+		<div class="footer-links">
+			<a th:href="@{/}" onclick="alternarMenu();">Home</a>
+			<a th:href="@{/promociones}" onclick="alternarMenu();">Promociones</a>
+			<a th:href="@{/tips}" onclick="alternarMenu();">Tips</a>
+			<a th:href="@{/nosotros}" onclick="alternarMenu();">Nosotros</a>
+			<a th:href="@{/Contactanos}" onclick="alternarMenu();">Contacto</a>
+		</div>
+		<!--<div class="social-icons">
+            <a href="#"><img src="https://image.flaticon.com/icons/png/512/145/145802.png" alt="Facebook"></a>
+            <a href="#"><img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_twitter_icon_130635.png" alt="Twitter"></a>
+            <a href="#"><img src="https://cdn.icon-icons.com/icons2/2107/PNG/512/file_type_instagram_icon_130614.png" alt="Instagram"></a>
+        </div>-->
+		<div class="footer-copyright">
+			<p>&copy; 2023 Todos los derechos reservados</p>
+		</div>
+	</footer>
+	<script type="text/javascript">
+		window.addEventListener('scroll', function () {
+			const header = document.querySelector('header');
+			header.classList.toggle("sticky", window.scrollY > 0);
+		});
+
+		function alternarMenu() {
+			const menuAlternar = document.querySelector('.menuAlternar');
+			const navigation = document.querySelector('.navigation');
+			menuAlternar.classList.toggle('activo');
+			navigation.classList.toggle('activo');
+		}
+
+	</script>
+
+
+</body>
+
+</html>
